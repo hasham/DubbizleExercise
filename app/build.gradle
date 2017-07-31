@@ -1,0 +1,83 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        vectorDrawables.useSupportLibrary = true
+    }
+    dataBinding {
+        enabled true
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(RELEASE_STORE_FILE)
+            storePassword RELEASE_STORE_PASSWORD
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+        }
+    }
+
+    productFlavors {
+        staging {
+            applicationId "com.dubizzle.moviesdemo.staging"
+            minSdkVersion 17
+            targetSdkVersion 25
+            versionCode 1
+            versionName "1.0"
+            buildConfigField 'String', 'HOST', '"https://api.themoviedb.org/3/"'
+            buildConfigField 'String', 'API_KEY', '"c43d880f1595a7aa42ae0cdbcc6d6234"'
+        }
+
+        production {
+            applicationId "com.dubizzle.moviesdemo"
+            minSdkVersion 17
+            targetSdkVersion 25
+            versionCode 1
+            versionName "1.0"
+            buildConfigField 'String', 'HOST', '"https://api.themoviedb.org/3/"'
+            buildConfigField 'String', 'API_KEY', '"c43d880f1595a7aa42ae0cdbcc6d6234"'
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    project.ext { appName = 'DubizzleTest' }
+                    def formattedDate = new Date().format('yyyyMMdd')
+                    def newName = output.outputFile.name
+                    newName = newName.replace("app-", "$project.ext.appName-")
+                    newName = newName.replace("-release", "-release" + formattedDate)
+                    //noinspection GroovyAssignabilityCheck
+                    output.outputFile = new File(output.outputFile.parent, newName)
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:26.0.0'
+    compile 'com.android.support:design:26.0.0'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.moshi:moshi:1.5.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.squareup.retrofit2:converter-moshi:2.3.0'
+    compile 'com.squareup.okio:okio:1.13.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    compile 'uk.co.chrisjenx:calligraphy:2.2.0'
+    compile 'com.google.dagger:dagger:2.8'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.8'
+    provided 'javax.annotation:jsr250-api:1.0'
+    compile 'com.android.support:cardview-v7:26.0.0'
+    compile 'com.airbnb.android:lottie:2.1.0'
+}
