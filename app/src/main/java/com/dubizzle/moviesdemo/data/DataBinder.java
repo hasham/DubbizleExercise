@@ -5,6 +5,7 @@ import android.databinding.BindingAdapter;
 import android.util.Patterns;
 import android.widget.ImageView;
 
+import com.dubizzle.moviesdemo.util.CropTransformation;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -22,7 +23,17 @@ public class DataBinder {
 
         if (url != null && !url.equals("") && Patterns.WEB_URL.matcher(url).matches()) {
             Context context = imageView.getContext();
-            Picasso.with(context).load(url).fit().into(imageView);
+            Picasso.with(context).load(url).into(imageView);
+        }
+    }
+
+    @BindingAdapter("imageUrlCrop")
+    public static void setImageCropUrl(ImageView imageView, String url) {
+
+        if (url != null && !url.equals("") && Patterns.WEB_URL.matcher(url).matches()) {
+            Context context = imageView.getContext();
+            Picasso.with(context).load(url).transform(new CropTransformation(500, 500, CropTransformation.GravityHorizontal.LEFT,
+                    CropTransformation.GravityVertical.TOP)).into(imageView);
         }
     }
 

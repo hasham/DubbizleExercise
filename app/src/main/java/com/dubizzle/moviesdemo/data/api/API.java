@@ -12,6 +12,8 @@ public class API {
 
 
     public static final String ACTION_DISCOVER = "discover/movie";
+    public static final String ACTION_RECOMENDATION= "movie/{movie_id}/recommendations";
+    public static final String ACTION_VIDEOS= "movie/{movie_id}/videos";
 
     public static Map<String, String> getParams(int page, String maxDate, String minDate) {
 

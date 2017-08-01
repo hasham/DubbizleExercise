@@ -8,4 +8,7 @@
     <string name="minYear">1970</string>
     <string name="maxYear">2017</string>
     <string name="to">To</string>
+    <string name="title_activity_detail">Movie Detail</string>
+    <string name="imdb">IMDB</string>
+    <string name="related">RELATED MOVIES:</string>
 </resources>

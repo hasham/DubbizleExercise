@@ -14,7 +14,7 @@ public class ApiResponse {
     @Json(name = "total_pages")
     private Integer totalPages;
     @Json(name = "results")
-    private List<Result> results = null;
+    private List<Movie> results = null;
 
     /**
      * No args constructor for use in serialization
@@ -30,7 +30,7 @@ public class ApiResponse {
      * @param page
      * @param totalPages
      */
-    public ApiResponse(Integer page, Integer totalResults, Integer totalPages, List<Result> results) {
+    public ApiResponse(Integer page, Integer totalResults, Integer totalPages, List<Movie> results) {
         super();
         this.page = page;
         this.totalResults = totalResults;
@@ -62,11 +62,11 @@ public class ApiResponse {
         this.totalPages = totalPages;
     }
 
-    public List<Result> getResults() {
+    public List<Movie> getResults() {
         return results;
     }
 
-    public void setResults(List<Result> results) {
+    public void setResults(List<Movie> results) {
         this.results = results;
     }
 

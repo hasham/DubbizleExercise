@@ -48,3 +48,9 @@
 -dontwarn sun.reflect.*
 
 -keep class com.androidplot.** { *; }
+
+-dontwarn com.squareup.okhttp.**
+
+-keep class com.squareup.moshi.** { *; }
+-keep interface com.squareup.moshi.** { *; }
+-dontwarn com.squareup.moshi.**
