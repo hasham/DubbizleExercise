@@ -43,6 +43,7 @@ public class DetailActivity extends BaseActivity implements RestCallBack {
         binding.recyclerViewDetail.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         binding.recyclerViewDetail.setHasFixedSize(true);
         binding.recyclerViewDetail.setItemViewCacheSize(20);
+        binding.recyclerViewDetail.setNestedScrollingEnabled(false);
         binding.recyclerViewDetail.setDrawingCacheEnabled(true);
         binding.recyclerViewDetail.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
