@@ -5,6 +5,7 @@ The application is based on the TheMovieDb API
  * Application lists the latest movies.
  * Able to filter movies based on the release dates.
  * Contains Infinite Scrolling and Pagination.
+ * A detail screen showing movie detail and related movie recommendations.
 
 
 ### Technology Stack includes:
@@ -16,4 +17,5 @@ The application is based on the TheMovieDb API
  * Parcable Android Studio Plugin
  * Google AppCompat and Design library elements used.
  * Demostration of usage of vector graphics supporting upto Android 16.
+ * Picasso for image loading caching.
 
